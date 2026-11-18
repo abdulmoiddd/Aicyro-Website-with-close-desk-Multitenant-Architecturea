@@ -1,0 +1,113 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "component",
+  "shape": "work index (Index-First, hire)",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/chromatic-violet",
+  "hero": "Ledger on the night field: head across twelve columns, line and actions beneath, the ledger across the width",
+  "nav": "unchanged",
+  "footer": "unchanged",
+  "imagery": "none in the hero (type and the CMS case-study ledger)",
+  "photos": [],
+  "entry": "one reveal on the ledger rows",
+  "fingerprint": "Hanging|Asymmetric spans|Hairline|Solid|None|Fade-up stagger",
+  "sections": [
+   "hero: shipped-work ledger"
+  ],
+  "signature": "the shipped-work ledger, five real case studies numbered with place, team and duration, paper on the night field",
+  "waived": [
+   "49b"
+  ],
+  "prompt": "Aicyro home hero: keep the case-study index, make it premium",
+  "date": "2026-11-18"
+ },
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "work index (Index-First, hire)",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/chromatic-violet",
+  "hero": "Index (/), Banner (inner pages)",
+  "nav": "three-part bar, services disclosure, theme switch, Contact",
+  "footer": "statement",
+  "imagery": "owner case-study screenshots from the CMS; no library photos",
+  "photos": [],
+  "entry": "one reveal, fade and 8px rise",
+  "sections": [
+   "hero: shipped-work index",
+   "problem rows",
+   "services grid and tech stack",
+   "work showcase",
+   "process steps",
+   "planning tools band",
+   "why rows and client logos",
+   "one testimonial at a time",
+   "close: audit band"
+  ],
+  "signature": "the shipped-work index from the CMS portfolio",
+  "waived": [],
+  "prompt": "Aicyro software studio public website: hire, the work is the proof",
+  "date": "2026-11-18",
+  "fingerprint": "Hanging|Two-column asymmetric|Hairline|Solid|Tightly cropped to the grid|Fade-up stagger"
+ },
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "app",
+  "shape": "app screen",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/chromatic-violet",
+  "hero": "none (app)",
+  "nav": "kept (lg.jsx shell)",
+  "footer": "none (app)",
+  "imagery": "product data only",
+  "photos": [],
+  "entry": "none, state motion only",
+  "sections": [
+   "page head with timeframe",
+   "report tab strip",
+   "report sheet: figures, trend, records"
+  ],
+  "signature": "the printable report sheet",
+  "waived": [],
+  "prompt": "CloseDesk Pulse reports screen",
+  "date": "2026-11-17"
+ },
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "app",
+  "shape": "app screen",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/chromatic-violet",
+  "hero": "none (app)",
+  "nav": "persistent sidebar over 60rem, menu below",
+  "footer": "none (app)",
+  "imagery": "product data only",
+  "photos": [],
+  "entry": "none, state motion only",
+  "sections": [
+   "shell",
+   "Pulse overview",
+   "Leads queue",
+   "Booking",
+   "Insight",
+   "Cookie data",
+   "Reports",
+   "Conversations",
+   "Settings x5",
+   "Super admin console",
+   "Login x2",
+   "Chatbot widget"
+  ],
+  "signature": "the lead queue table",
+  "waived": [
+   "28b"
+  ],
+  "prompt": "CloseDesk operator console and chatbot widget for field-service tenants",
+  "date": "2026-11-17"
+ }
+]
