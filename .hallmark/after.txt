@@ -1,0 +1,268 @@
+render tier: 50 screenshots in D:\Software House 01\Claude workspace for Aicyrowork website\Final Aicyro website\.hallmark\shots (1280x800, 1440x900, 1920x1080 folds; 1440 and 375 full pages)
+src\components\Home\extra\ProblemSolution.jsx
+  FAIL 2a :58 purple-to-blue gradient text (from-[#8F8BF9] to-[#5B86D3]) on <span class="text-transparent bg-clip-text b…"> | fix: One anchor hue, solid ink
+  FAIL 10a :66 transition-all on <motion class="group relative p-8 rounded-2xl …"> | fix: Name the properties: transition-colors, transition-opacity or transition-transform
+  FAIL 10a :107 transition-all on <button class="flex items-center gap-2 px-8 py…">
+  FAIL 48 :40 colour literal bg-[#8F8BF9]/5 in a class on <div class="absolute top-0 right-0 w-[500px…"> | fix: Lift the value into the token block (@theme or :root) and use its utility name
+  FAIL 48 :44 colour literal text-[#8F8BF9] in a class on <motion class="text-[#8F8BF9] font-semibold tr…">
+  FAIL 48 :58 colour literal from-[#8F8BF9] in a class on <span class="text-transparent bg-clip-text b…">
+  FAIL 48 :66 colour literal hover:border-[#8F8BF9]/40 in a class on <motion class="group relative p-8 rounded-2xl …">
+  FAIL 48 :74 colour literal text-[#8F8BF9] in a class on <div class="p-4 rounded-xl bg-[var(--foregr…">
+  FAIL 48 :87 colour literal text-[#8F8BF9] in a class on <PlusCircle class="w-5 h-5 text-[#8F8BF9] mt-1 shr…">
+  FAIL 48 :105 colour literal text-[#8F8BF9] in a class on <span class="text-[#8F8BF9]">
+  FAIL 48 :107 colour literal bg-[#8F8BF9] in a class on <button class="flex items-center gap-2 px-8 py…">
+  FAIL 67 :44 "The Aicyro Advantage" uppercase at 14px tracked 0.1em on <motion class="text-[#8F8BF9] font-semibold tr…"> | fix: Sentence case in the body face, a step smaller, untracked: drop uppercase and the tracking-* class
+  WARN 29 :40 blurred orb: blur-[120px] on a filled absolute element on <div class="absolute top-0 right-0 w-[500px…"> | fix: Solid or grained surface; elevation by lightness, shadows with offset and blur
+  WARN 29 :107 glow: hover:shadow-[0_0_30px_rgba(143,139,249,0.3)] on <button class="flex items-center gap-2 px-8 py…">
+src\components\Home\extra\WhyChooseSection.jsx
+  FAIL 2a :77 purple-to-blue gradient text (from-[#7973DB] to-[#5B86D3]) on <span class="text-transparent bg-clip-text b…">
+  FAIL 2a :100 purple-to-blue gradient (from-[#7973DB] to-[#5B86D3]) on <div class="w-12 h-12 rounded-lg bg-gradien…">
+  FAIL 10a :93 transition-all on <motion class="flex items-start p-8 rounded-2x…">
+  FAIL 19 :85 buzzword "Empowering" | fix: Say what the product does, in its own nouns
+  FAIL 48 :62 colour literal bg-[#0B0219] in a class on <motion class="bg-[#0B0219] text-white py-20 s…">
+  FAIL 48 :77 colour literal from-[#7973DB] in a class on <span class="text-transparent bg-clip-text b…">
+  FAIL 48 :93 colour literal bg-[#0B0219]/50 in a class on <motion class="flex items-start p-8 rounded-2x…">
+  FAIL 48 :100 colour literal from-[#7973DB] in a class on <div class="w-12 h-12 rounded-lg bg-gradien…">
+  FAIL 48 :107 colour literal group-hover:text-[#7B71DB] in a class on <h3 class="text-xl font-bold text-white mb…">
+  WARN 29 :93 glow: hover:shadow-[0_0_20px_rgba(123,113,219,0.1)] on <motion class="flex items-start p-8 rounded-2x…">
+src\components\Home\extra\counter.jsx
+  FAIL 2a :135 purple-to-blue gradient (from-[#7873DA] to-[#5B86D3]) on <motion class="bg-gradient-to-r from-[#7873DA]…">
+  FAIL 48 :135 colour literal from-[#7873DA] in a class on <motion class="bg-gradient-to-r from-[#7873DA]…">
+  FAIL 67 :102 uppercase at 12px tracked 0.1em on <span class="text-xs tracking-widest upperca…">
+src\components\Home\extra\ProcessSection.jsx
+  FAIL 6a :71 hero sized in vh: min-h-screen on <section class="relative bg-[var(--background)]…"> | fix: min-h-dvh or min-h-svh
+src\components\Home\extra\steps.jsx
+  FAIL 6a :519 hero sized in vh: min-h-screen on <section class="relative min-h-screen w-full bg…">
+  FAIL 10a :549 transition-all on <div class="bg-[var(--card-bg)]/90 backdrop…">
+  FAIL 10a :558 transition-all on <a class="mt-6 block w-full py-3 rounded-…">
+  FAIL 10a :585 transition-all on <div class="p-8 flex flex-col justify-cente…">
+  FAIL 19 :556 buzzword "ELEVATE"
+  FAIL 33 :524 <canvas> without aria-hidden or aria-label | fix: Add aria-hidden or an aria-label
+  FAIL 48 :549 colour literal shadow-[0_0_80px_rgba(100,100,255,0.15)] in a class on <div class="bg-[var(--card-bg)]/90 backdrop…">
+  FAIL 48 :558 colour literal from-[#6366f1] in a class on <a class="mt-6 block w-full py-3 rounded-…">
+  REFLEX 2b :551 gradient text (from-[var(--foreground)] via-blue-400 to-blue-600) on <h2 class="text-3xl font-bold bg-clip-text…"> | fix: Solid ink; weight or a display face. Guard: a single-hue ramp from two tokens with 40 and 41 passing
+  WARN 29 :549 glow: shadow-[0_0_80px_rgba(100,100,255,0.15)] on <div class="bg-[var(--card-bg)]/90 backdrop…">
+src\components\Home\extra\coreservices.jsx
+  FAIL 10a :160 transition-all on <motion class="relative flex items-center just…">
+  FAIL 67 :216 uppercase at 12px tracked 0.1em on <motion class="inline-block border border-[var…">
+  WARN 28a :106 lazy-loaded first image (likely LCP) | fix: fetchpriority=high on the LCP element
+  WARN 74 :149 default palette instead of theme tokens: 6 distinct palette classes (shadow-indigo-500 bg-indigo-600 border-indigo-500 … | fix: Extend the Tailwind theme with the Hallmark tokens and use those names
+src\components\ThemeToggle.jsx
+  FAIL 10a :38 transition-all on <div class="absolute inset-0 rounded-full b…">
+  FAIL 10a :41 transition-all on <button class="relative flex items-center just…">
+  FAIL 10a :47 transition-all on <svg class="absolute w-5 h-5 transition-all…">
+  FAIL 10a :72 transition-all on <svg class="absolute w-5 h-5 transition-all…">
+  FAIL 48 :41 colour literal shadow-[0_8px_30px_rgb(0,0,0,0.15)] in a class on <button class="relative flex items-center just…">
+  WARN 29 :41 glass: backdrop-blur-xl over bg-background/60 on <button class="relative flex items-center just…">
+src\pages\logs.jsx
+  FAIL 10a :661 transition-all on <button class="px-4 py-2 text-xs font-bold rou…">
+  FAIL 10a :664 transition-all on <button class="px-4 py-2 text-xs font-bold rou…">
+  FAIL 30a :562 text opens with an emoji: "⚡" | fix: One icon library, a custom SVG, or the word alone
+  FAIL 33 :268 <svg> without aria-hidden or aria-label
+  FAIL 33 :308 <svg> without aria-hidden or aria-label
+  FAIL 33 :318 <svg> without aria-hidden or aria-label
+  FAIL 33 :330 <svg> without aria-hidden or aria-label
+  FAIL 33 :349 <svg> without aria-hidden or aria-label
+  FAIL 33 :359 <svg> without aria-hidden or aria-label
+  FAIL 33 :369 <svg> without aria-hidden or aria-label
+  FAIL 33 :602 <svg> without aria-hidden or aria-label
+  FAIL 33 :607 <svg> without aria-hidden or aria-label
+  FAIL 48 :639 colour literal bg-[#0f1115] in a class on <pre class="text-[11px] text-gray-200 bg-[#…">
+  FAIL 67 :297 "Simulate Role:" uppercase at 12px on <span class="text-xs uppercase text-[var(--a…">
+  FAIL 67 :309 "Client View Active" uppercase at 12px tracked 0.1em on <span class="text-xs uppercase font-bold tra…">
+  FAIL 67 :418 "Start Date" uppercase at 10px tracked 0.1em on <label class="text-[10px] font-bold uppercase…">
+  FAIL 67 :422 "End Date" uppercase at 10px tracked 0.1em on <label class="text-[10px] font-bold uppercase…">
+  FAIL 67 :426 "Session / Convo ID" uppercase at 10px tracked 0.1em on <label class="text-[10px] font-bold uppercase…">
+  FAIL 67 :430 "Correlation Trace ID" uppercase at 10px tracked 0.1em on <label class="text-[10px] font-bold uppercase…">
+  FAIL 67 :434 "Lead ID" uppercase at 10px tracked 0.1em on <label class="text-[10px] font-bold uppercase…">
+  FAIL 67 :438 "Status Code / State" uppercase at 10px tracked 0.1em on <label class="text-[10px] font-bold uppercase…">
+  FAIL 67 :461 "Timestamp & Env Level &…" uppercase at 10px tracked 0.1em on <tr class="bg-[var(--background)]/50 borde…">
+  FAIL 67 :492 uppercase at 10px on <span class="text-[10px] uppercase font-bold…">
+  FAIL 67 :510 uppercase at 9px tracked 0.05em on <span class="text-[9px] font-black px-1.5 py…">
+  FAIL 67 :513 "•" uppercase at 10px tracked 0.05em on <span class="text-[10px] uppercase text-[var…">
+  FAIL 67 :557 uppercase at 10px on <span class="text-[10px] font-bold px-1.5 py…">
+  FAIL 67 :583 "Has Hidden Metadata (Cl…" uppercase at 9px on <span class="text-[9px] text-yellow-500 font…">
+  FAIL 67 :584 "Data Redacted" uppercase at 9px tracked 0.1em on <span class="text-[9px] text-[var(--foregrou…">
+  FAIL 67 :595 "Deep Trace Inspection" uppercase at 14px on <h4 class="text-sm font-black text-[var(--…">
+  FAIL 67 :613 "Timestamp" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :614 "Environment" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :615 "Service / Component" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :616 "Performance" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :618 "Correlation Trace" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :619 "Session ID" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :620 "Lead ID" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :621 "Request ID" uppercase at 9px on <p class="text-[9px] uppercase font-bold …">
+  FAIL 67 :626 "Error Details" uppercase at 10px tracked 0.05em on <h5 class="text-[10px] font-bold text-red-…">
+  FAIL 67 :637 "Raw JSON Payload" uppercase at 10px tracked 0.05em on <h5 class="text-[10px] font-bold text-[var…">
+  REFLEX 64 :514 font-mono on "Tool:" at 9px (<span class="text-[9px] font-mono bg-indigo-…">) | fix: Labels in the body face at a smaller size and normal case; font-mono only for code and figures
+  REFLEX 64 :521 font-mono on "Sess: ... No Session Tr…" at 10px (<div class="flex flex-col gap-1 font-mono t…">)
+  REFLEX 64 :545 font-mono on "v | Build:" at 9px (<span class="text-[9px] font-mono text-[var(…">)
+  REFLEX 64 :562 font-mono on "⚡ ms" at 10px (<span class="text-[10px] font-mono text-[var…">)
+  REFLEX 64 :627 font-mono on "Code: | Msg:" at 12px (<p class="text-xs text-red-400 font-mono …">)
+  WARN 74 :335 default palette instead of theme tokens: 30 distinct palette classes (bg-red-500 text-red-500 bg-green-500 border-green…
+  WARN F2 :452 three-period ellipsis in prose x4 | fix: Use a true ellipsis character (…)
+  WARN F24 :266 a hairline border under a wide soft shadow (border with shadow-xl or shadow-2xl) | fix: Commit to one: a defined edge, or elevation by shadow
+src\components\Home\extra\Experience.jsx
+  FAIL 19 :95 dash "—" in copy | fix: A comma, a colon, a full stop or parentheses; never a dash
+  FAIL 48 :87 colour literal from-[#657FD5] in a class on <div class="bg-gradient-to-t from-[#657FD5]…">
+  FAIL 48 :121 colour literal hover:bg-[#5B86D3] in a class on <button class="inline-flex items-center space-…">
+  FAIL 67 :121 "EXPLORE ABOUT US" uppercase at 14px tracked 0.05em on <button class="inline-flex items-center space-…">
+src\pages\404.jsx
+  FAIL 34 :1 no overflow-x: clip on html and body | fix: overflow-x: clip on both html and body
+  NOTE 58 :39 hero paragraph runs 18 words | fix: One sentence, twelve words or fewer
+src\pages\e2e-report.jsx
+  FAIL 48 :12 inline-style colour literal #090d16 | fix: Lift the value into the token block
+http://localhost:3300/
+  FAIL 62 :1 [1440px] 65% of the page's text is still hidden after load | fix: Visible by default: scope the hidden state under a .js class, or show the end state under reduced motion
+  WARN 77 :1 [1440px] 0 sections, hero and footer included | fix: A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)
+.hallmark\before.json
+  FAIL kept :1 links the page had before and no longer has: { data.url.startsWith("http") || data.url.start…, {`/contact?service=others&sub=${encodeURICompon…, {i.to} | fix: Restore each one, or record it in the stamp: /* Hallmark · dropped <item>, <item> · <the reason> */
+  FAIL kept :1 fields the page had before and no longer has: Actual Performance, AutoScholar, Burnout Risk, Contribution %, Hard-coded, Keyword Search, Manual Time, Predicted Mastery and 14 more
+  FAIL kept :1 a form lost what it had before: the form form 1 on http://localhost:3300/
+  FAIL kept :1 handlers the page had before and no longer has: onChange={() => {}}, onClick={() => handleManualScroll("left")}, onClick={() => handleManualScroll("right")}, onClick={() => scrollToCard(idx)}, onClick={() => scrollToSection(section.id)}, onClick={() => setActiveImage(index)}, onClick={() => setFormData({ ...formData, timel…, onClick={() => toggleItem(item.id)} and 12 more
+  WARN kept :1 headings gone or reworded since the before record: custom ai-driven software solutions that help b…, struggling to build reliable software that actu…, projects going over budget or deadline, difficulty finding the right technical team, poor performance & scalability issues, security and compliance concerns, lack of ai expertise in execution, that’s where aicyro comes in. and 37 more | fix: Restore it, or record it in the stamp: /* Hallmark · reworded "<old>" to "<new>" · <the gate that named it> */ or dropped <item> · <the reason>
+  WARN kept :1 figures gone or reworded since the before record: 99.9%, 72%, 2minutes, 2026
+  WARN kept :1 images gone or reworded since the before record: human-agent.svg
+  WARN kept :1 ids gone or reworded since the before record: colorAi, colorConf, colorDigital, colorEngage, colorGrowth, colorManual, colorOcc, colorProb and 9 more
+http://localhost:3300/about
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: button.cd-btn 36px, button.cd-btn 36px | fix: Marketing controls stand 44 to 52px; app UI 32 to 40px with a 44px hit target
+  REFLEX 44c :1 [1440px] hero ends at 323px of a 900px screen | fix: Fill the first screen with the visual or the headline, not with copy
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a) | fix: Shorten the label or set nowrap
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700) | fix: Three weights at most, display and body together, picked as extremes
+  NOTE 58 :1 [1440px] 139 words on one screen (from y=0) | fix: One idea per screen: cut to about 80 words, make the section an object
+http://localhost:3300/blogs
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: button.cd-btn 36px, button.cd-btn 36px
+  REFLEX 44c :1 [1440px] hero ends at 418px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  REFLEX 71 :1 [1440px] heads nearer what precedes them than what they head: h3.ax-h3 "The Survival Proto" 15px over, 94px under; h3.a… | fix: At least twice the space above a head as below it
+  REFLEX 75 :1 [1440px] text that strains the eye: h3.ax-h3 leaded 1.20, h3.ax-h3 leaded 1.20, h3.ax-h3 leaded 1.20, h3.ax-h3 leaded 1… | fix: Running text 12px or more (16px for body), functional text 11px or more, multi-line prose leaded 1.3 or more
+  REFLEX 77 :1 [1440px] 1 thin section: "The Ultimate MVP Launch Blue" (98% wide, no mass) | fix: Widen the body to ten of twelve columns and give it mass: a visual 300px tall or more, a set of three across, rows, or a statement (layout.md § 4 and § 5)
+  REFLEX 83 :1 [1440px] photographs cover 36% of the page below the hero (9 pictures) | fix: Balance the page: cut or shrink pictures until they cover a quarter to a third of it, and carry the freed sections in type, figures, the product or a list (imagery.md § 5)
+  WARN 77 :1 [1440px] 3 sections, hero and footer included
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700)
+  NOTE 58 :1 [1440px] 103 words on one screen (from y=50)
+http://localhost:3300/blogs/blog11
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: button.cd-btn 36px, button.cd-btn 36px
+  REFLEX 44c :1 [1440px] hero ends at 454px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  REFLEX 78 :1 [1440px] section heads render at 31px under a 60px hero head | fix: h2 at --text-section (about 52px at 1440), item titles at --text-title (layout.md § 2)
+  WARN 77 :1 [1440px] 3 sections, hero and footer included
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700)
+  NOTE 58 :1 [1440px] 189 words on one screen (from y=500)
+http://localhost:3300/portfolio
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: button.cd-btn 36px, button.cd-btn 36px
+  REFLEX 44c :1 [1440px] hero ends at 302px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  REFLEX 83 :1 [1440px] photographs cover 43% of the page below the hero (14 pictures)
+  WARN 77 :1 [1440px] 3 sections, hero and footer included
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700)
+  NOTE 58 :1 [1440px] 137 words on one screen (from y=4700)
+http://localhost:3300/portfolio/kaira
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: button.cd-btn 36px, button.cd-btn 36px
+  REFLEX 44c :1 [1440px] hero ends at 441px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700)
+  NOTE 58 :1 [1440px] 103 words on one screen (from y=0)
+http://localhost:3300/services
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: button.cd-btn 36px, button.cd-btn 36px
+  REFLEX 44c :1 [1440px] hero ends at 474px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700)
+  NOTE 58 :1 [1440px] 126 words on one screen (from y=0)
+http://localhost:3300/services/ai-solutions
+  REFLEX 39b :1 [1440px] control height outside 44 to 52px: button.cd-btn 36px, button.cd-btn 36px
+  REFLEX 44c :1 [1440px] hero ends at 499px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  WARN F19 :1 [1440px] 4 font weights in running use (400, 500, 600, 700)
+  NOTE 58 :1 [1440px] 173 words on one screen (from y=0)
+http://localhost:3300/contact
+  REFLEX 44c :1 [1440px] hero ends at 303px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  REFLEX 77 :1 [1440px] 1 thin section: "The Ultimate MVP Launch Blue" (98% wide, no mass)
+  NOTE 58 :1 [1440px] 85 words on one screen (from y=0) | fix: Close to the 80-word screen budget
+http://localhost:3300/resources/project-estimate
+  REFLEX 44a :1 [1440px] hero content sits low: 64px above it, 40px below | fix: Centre the content in its screen: the space below 1.0 to 1.5 times the space above (a Ledge sits low on purpose; say Ledge in the stamp)
+  REFLEX 44c :1 [1440px] hero ends at 263px of a 900px screen
+  REFLEX 49b :1 [1024px] link "AI Solutions & Automation" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Cybersecurity Services" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Custom Software Development" wraps to 2 lines (a)
+  REFLEX 49b :1 [1024px] link "Book Free Consultation" wraps to 2 lines (a.ax-link)
+  REFLEX 78 :1 [1440px] section heads render at 25px under a 84px hero head
+  WARN 77 :1 [1440px] 2 sections, hero and footer included
+  NOTE 58 :1 [1440px] 83 words on one screen (from y=0)
+src\styles\www\resources.css
+  WARN 23 :127 accent background on viewport-scale rule ".rs-readbar" | fix: Accent stays <= 5% of a viewport; large fills belong to paper/field tokens or a declared posture in the stamp
+src\styles\www\services.css
+  WARN 25 :75 measure 34ch on .svc-moral p (45-75ch range) | fix: Set prose measure between 45 and 75ch; a one-sentence lede or caption from 28ch
+  WARN 25 :101 measure 24ch on .svc-statement p (45-75ch range)
+src\components\Home\CaseSection.jsx
+  WARN 28a :114 lazy-loaded first image (likely LCP)
+src\components\Home\Testimonial.jsx
+  WARN 28a :26 lazy-loaded first image (likely LCP)
+src\pages\blogs\blog6.jsx
+  WARN 46a :54 metric "5× faster": verify the user supplied this number | fix: Confirm the metric or drop the slot
+src\pages\blogs\blog7.jsx
+  WARN 46a :114 metric "35% faster": verify the user supplied this number
+src\pages\free-website-audit.jsx
+  WARN 49 :1391 long clickable label "Download Visual Blueprint (PDF)" without nowrap | fix: Shorten the label or set nowrap
+  NOTE 58 :755 h1 runs 9 words ("Find out where your website is losing s…") | fix: Seven words or fewer, 50 characters or fewer
+  NOTE 58 :758 hero paragraph runs 32 words
+src\pages\resources\security-checklist.jsx
+  WARN 49 :244 long clickable label "Download Action Plan &amp; Book Sec…" without nowrap
+  NOTE 58 :119 hero paragraph runs 25 words
+src\components\Form\Popupform.jsx
+  WARN 70 :1 a script prints success ("Done-for-you setup") with no request behind it | fix: No success state until the form posts somewhere; an empty data-endpoint and a handoff note
+src\components\contactus\contactform.jsx
+  WARN 70 :1 a script prints success ("Get in Touch") with no request behind it
+src\pages\MeetingScheduler.jsx
+  WARN 76 :145 a Commons file that is not in the library (Google_"G"_logo.svg) | fix: Pick photographs with theme.mjs photos, or check its licence and credit it by hand
+  NOTE 58 :106 hero paragraph runs 16 words
+src\components\Essntials\footer.jsx
+  DISMISSED 42 :38 default footer shape: 4 link columns
+src\components\Aboutus\Aboutstart.jsx
+  NOTE 58 :29 hero paragraph runs 13 words
+src\components\blogs\blogstart.jsx
+  NOTE 58 :17 hero paragraph runs 16 words
+src\components\portfolio\intro.jsx
+  NOTE 58 :9 h1 runs 8 words ("We don’t just ship code. We deliver out…")
+src\components\services\ServicesIntro.jsx
+  NOTE 58 :12 hero paragraph runs 35 words
+src\pages\privacy.jsx
+  NOTE 58 :278 hero paragraph runs 21 words
+src\pages\resources\ai-readiness.jsx
+  NOTE 58 :132 hero paragraph runs 17 words
+src\pages\resources\mvp-blueprint.jsx
+  NOTE 58 :319 hero paragraph runs 14 words
+src\pages\terms.jsx
+  NOTE 58 :219 hero paragraph runs 24 words
+src\pages\thank-you-mvp.jsx
+  NOTE 58 :29 hero paragraph runs 17 words
+src\pages\thank-you.jsx
+  NOTE 58 :31 hero paragraph runs 19 words
+sloplint: 90 FAIL, 67 REFLEX, 38 WARN, 1 DISMISSED, 24 NOTE across 125 file(s) and 10 URL(s).
+kept: links 71/74, fields 12/34, handlers 96/116, headings 47/92, figures 10/14; before 1089 FAIL, 156 REFLEX, now 90 FAIL, 67 REFLEX
+compare: .hallmark\compare.html shows before and after side by side
