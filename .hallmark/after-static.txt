@@ -1,0 +1,50 @@
+src\styles\www\resources.css
+  WARN 23 :127 accent background on viewport-scale rule ".rs-readbar" | fix: Accent stays <= 5% of a viewport; large fills belong to paper/field tokens or a declared posture in the stamp
+src\styles\www\services.css
+  WARN 25 :75 measure 34ch on .svc-moral p (45-75ch range) | fix: Set prose measure between 45 and 75ch; a one-sentence lede or caption from 28ch
+  WARN 25 :101 measure 24ch on .svc-statement p (45-75ch range)
+src\components\Home\CaseSection.jsx
+  WARN 28a :114 lazy-loaded first image (likely LCP) | fix: fetchpriority=high on the LCP element
+src\pages\blogs\blog6.jsx
+  WARN 46a :54 metric "5× faster": verify the user supplied this number | fix: Confirm the metric or drop the slot
+src\pages\blogs\blog7.jsx
+  WARN 46a :114 metric "35% faster": verify the user supplied this number
+src\pages\free-website-audit.jsx
+  WARN 49 :1391 long clickable label "Download Visual Blueprint (PDF)" without nowrap | fix: Shorten the label or set nowrap
+  NOTE 58 :755 h1 runs 9 words ("Find out where your website is losing s…") | fix: Seven words or fewer, 50 characters or fewer
+  NOTE 58 :758 hero paragraph runs 32 words | fix: One sentence, twelve words or fewer
+src\pages\resources\security-checklist.jsx
+  WARN 49 :244 long clickable label "Download Action Plan &amp; Book Sec…" without nowrap
+  NOTE 58 :119 hero paragraph runs 25 words
+src\components\Form\Popupform.jsx
+  WARN 70 :1 a script prints success ("Done-for-you setup") with no request behind it | fix: No success state until the form posts somewhere; an empty data-endpoint and a handoff note
+src\components\contactus\contactform.jsx
+  WARN 70 :1 a script prints success ("Get in Touch") with no request behind it
+src\pages\MeetingScheduler.jsx
+  WARN 76 :145 a Commons file that is not in the library (Google_"G"_logo.svg) | fix: Pick photographs with theme.mjs photos, or check its licence and credit it by hand
+  NOTE 58 :106 hero paragraph runs 16 words
+src\components\Essntials\footer.jsx
+  DISMISSED 42 :38 default footer shape: 4 link columns
+src\components\Aboutus\Aboutstart.jsx
+  NOTE 58 :29 hero paragraph runs 13 words
+src\components\blogs\blogstart.jsx
+  NOTE 58 :17 hero paragraph runs 16 words
+src\components\portfolio\intro.jsx
+  NOTE 58 :9 h1 runs 8 words ("We don’t just ship code. We deliver out…")
+src\components\services\ServicesIntro.jsx
+  NOTE 58 :12 hero paragraph runs 35 words
+src\pages\404.jsx
+  NOTE 58 :39 hero paragraph runs 18 words
+src\pages\privacy.jsx
+  NOTE 58 :278 hero paragraph runs 21 words
+src\pages\resources\ai-readiness.jsx
+  NOTE 58 :132 hero paragraph runs 17 words
+src\pages\resources\mvp-blueprint.jsx
+  NOTE 58 :319 hero paragraph runs 14 words
+src\pages\terms.jsx
+  NOTE 58 :219 hero paragraph runs 24 words
+src\pages\thank-you-mvp.jsx
+  NOTE 58 :29 hero paragraph runs 17 words
+src\pages\thank-you.jsx
+  NOTE 58 :31 hero paragraph runs 19 words
+sloplint: 0 FAIL, 11 WARN, 1 DISMISSED, 15 NOTE across 109 file(s).
