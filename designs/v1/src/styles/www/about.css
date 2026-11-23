@@ -1,0 +1,117 @@
+/* Aurora · about group: page-specific rules for the public website, scoped under .www (kit in ../www.css, DESIGN.md "Aurora") */
+/* /about: aurora Banner, mission and vision as tinted cards with the commitment beneath, why Aicyro as a bento on a band, gradient CTA close.
+ * /contact: aurora Banner, form panel beside icon info cards, booking card on a band, blueprint teaser.
+ * /MeetingScheduler: aurora Banner, form panel beside icon info cards. */
+
+/* ------------------------------------------------------------ banner extras */
+.www .about-crumbs ol { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
+.www .about-crumbs li { display: inline-flex; align-items: center; }
+.www .about-crumbs li[aria-current="page"] { color: var(--color-ink); font-weight: 600; }
+.www .about-crumbs .ax-link { color: var(--color-ink-2); font-weight: 500; }
+
+/* ------------------------------------------------------------ /about: mission and vision (tinted pair, commitment beneath) */
+.www .about-mv { padding-top: 0; }
+.www .about-mv__card { gap: var(--space-md); padding: var(--space-2xl); }
+.www .about-mv__title { font-size: var(--text-2xl); font-weight: 800; line-height: 1.12; letter-spacing: -0.03em; max-width: 22ch; }
+.www .about-mv__card--vision { position: relative; overflow: hidden; }
+.www .about-mv__card--vision::after {
+  content: ""; position: absolute; z-index: 0; right: -80px; bottom: -80px; width: 240px; aspect-ratio: 1; border-radius: 999px; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--accent-blue) 22%, transparent), transparent);
+}
+.www .about-mv__card--vision > * { position: relative; z-index: 1; }
+
+.www .about-values { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin: auto 0 0; padding: var(--space-sm) 0 0; list-style: none; }
+.www .about-values li {
+  display: inline-flex; align-items: center; gap: var(--space-sm);
+  padding: 6px var(--space-md) 6px 6px; border-radius: 999px;
+  border: 1px solid var(--card-border); background: var(--card-bg); box-shadow: var(--shadow-sm);
+  font-weight: 600; font-size: var(--text-sm); color: var(--color-ink);
+}
+.www .about-values .ax-icon-tile { width: 36px; height: 36px; border-radius: 999px; }
+.www .about-values .ax-icon-tile > svg { width: 18px; height: 18px; }
+
+.www .about-commitment { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-lg) var(--gap-columns); align-items: center; margin: 0; padding: var(--space-2xl); }
+.www .about-commitment__head { display: flex; align-items: center; gap: var(--space-md); }
+.www .about-commitment blockquote { margin: 0; }
+.www .about-commitment blockquote p { font: 700 var(--text-2xl)/1.3 var(--font-display); letter-spacing: -0.02em; color: var(--color-ink); text-wrap: pretty; hanging-punctuation: first; }
+@media (max-width: 60rem) {
+  .www .about-commitment { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .www .about-mv__card, .www .about-commitment { padding: var(--space-lg); }
+  .www .about-commitment blockquote p { font-size: var(--text-xl); }
+}
+
+/* ------------------------------------------------------------ /about: why Aicyro (bento of icon cards) */
+.www .about-why__feature { justify-content: space-between; gap: var(--space-2xl); padding: var(--space-2xl); background: var(--brand-gradient-soft); border-color: color-mix(in oklch, var(--primary) 20%, var(--border-color)); }
+.www .about-why__feature .ax-icon-tile { width: 64px; height: 64px; border-radius: 18px; }
+.www .about-why__feature .ax-icon-tile > svg { width: 28px; height: 28px; }
+.www .about-why__feature .ax-h3 { font-size: var(--text-2xl); }
+.www .about-why__item { flex-direction: row; align-items: flex-start; gap: var(--space-lg); }
+.www .about-why__text { display: grid; gap: var(--space-sm); min-width: 0; }
+/* Kit gap: below 60rem .ax-bento > .ax-span-5 keeps a half-width span (even at phone width), so the feature card takes the full row here */
+@media (max-width: 60rem) {
+  .www .about-why > .about-why__feature { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 40rem) {
+  .www .about-why__feature { padding: var(--space-lg); gap: var(--space-lg); }
+  .www .about-why__item { flex-direction: column; gap: var(--space-sm); }
+}
+
+/* ------------------------------------------------------------ closing CTA band (about, contact) */
+.www .about-close { padding-block: var(--section-gap-s); }
+
+/* ------------------------------------------------------------ form beside info cards (contact, meeting scheduler) */
+.www .about-formgrid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-xl) var(--space-2xl); align-items: start; }
+.www .about-formpanel { display: grid; gap: var(--space-lg); padding: var(--space-2xl); box-shadow: var(--shadow-lg); }
+.www .about-formpanel__foot { padding-top: var(--space-lg); border-top: 1px solid var(--card-border); }
+
+.www .about-aside { display: grid; gap: var(--space-md); justify-items: start; }
+.www .about-infocards { display: grid; gap: var(--space-md); width: 100%; margin: 0; padding: 0; list-style: none; }
+.www .about-infocards > li { flex-direction: row; align-items: flex-start; gap: var(--space-md); padding: var(--space-lg); }
+.www .about-infocards__text { display: grid; gap: var(--space-2xs); min-width: 0; }
+.www .about-infocards__text p { color: var(--color-ink-2); }
+.www .about-infocards__label { font-size: var(--text-sm); font-weight: 600; color: var(--color-ink-2); }
+.www .about-infocards__text .about-infocards__label--strong { font: 700 var(--text-lg)/1.3 var(--font-display); letter-spacing: -0.01em; color: var(--color-ink); }
+.www .about-infocards a:not(.ax-link) { font: 700 var(--text-lg)/1.35 var(--font-display); letter-spacing: -0.01em; color: var(--color-ink); text-decoration: none; overflow-wrap: anywhere; transition: color var(--dur-short) var(--ease-out); }
+.www .about-infocards a:not(.ax-link):hover { color: var(--primary); }
+.www .about-infocards .ax-link { font-size: var(--text-lg); }
+
+@media (min-width: 60.0625rem) {
+  .www .about-aside { position: sticky; top: calc(var(--nav-h) + var(--space-xl)); }
+}
+@media (max-width: 60rem) {
+  .www .about-formgrid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .www .about-formpanel { padding: var(--space-lg) var(--space-md); }
+  .www .about-infocards > li { padding: var(--space-md); }
+}
+
+/* ------------------------------------------------------------ /contact */
+.www .contact-main { padding-top: 0; }
+.www .contact-loading { min-height: 320px; }
+.www .contact-loading .ax-container { align-content: center; }
+
+/* The booking block: a tinted card on a band, tile, text, action */
+.www .about-book { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--space-lg) var(--space-xl); align-items: center; padding: var(--space-2xl); }
+.www .about-book__tile { width: 64px; height: 64px; border-radius: 18px; align-self: start; }
+.www .about-book__tile > svg { width: 28px; height: 28px; }
+.www .about-book__text { display: grid; gap: var(--space-sm); justify-items: start; }
+@media (max-width: 60rem) {
+  .www .about-book { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .www .about-book { padding: var(--space-lg); }
+  .www .about-book__action, .www .about-book__action .ax-btn { width: 100%; }
+}
+
+/* ------------------------------------------------------------ /MeetingScheduler */
+.www .meet { padding-top: 0; }
+.www .meet-auth { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-md); padding: var(--space-lg); border-radius: var(--radius-input); border: 1px dashed color-mix(in oklch, var(--primary) 30%, var(--border-color)); background: color-mix(in oklch, var(--primary) 5%, var(--card-bg)); }
+.www .meet-auth .ax-btn img { flex-shrink: 0; }
+.www .meet-connected { display: flex; align-items: center; gap: var(--space-xs); padding: var(--space-sm) var(--space-md); border-radius: 999px; width: fit-content; background: color-mix(in oklch, var(--color-success) 10%, var(--card-bg)); border: 1px solid color-mix(in oklch, var(--color-success) 30%, transparent); font-weight: 600; font-size: var(--text-sm); color: var(--color-success); }
+.www .meet-status { display: flex; align-items: flex-start; gap: var(--space-sm); padding: var(--space-md); border-radius: var(--radius-input); border: 1px solid currentColor; background: color-mix(in oklch, currentColor 7%, var(--card-bg)); font-size: var(--text-sm); }
+.www .meet-date { padding-right: var(--space-sm); }
+:where([data-theme$="dark"]) .www .meet-date { color-scheme: dark; }
+.www .about-formpanel > .ax-help { margin-top: calc(-1 * var(--space-sm)); }
