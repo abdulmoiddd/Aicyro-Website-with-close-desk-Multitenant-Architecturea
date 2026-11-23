@@ -83,9 +83,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="ob-foot__mark" aria-hidden="true">
-        AICYRO
-      </p>
+     
 
       <div className="ax-container">
         <div className="ob-foot__legal">
