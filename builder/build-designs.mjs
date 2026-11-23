@@ -50,6 +50,26 @@ const NO_CACHE = args.includes("--no-cache");
 const log = (...m) => console.log("[designer]", ...m);
 const warn = (...m) => console.warn("[designer] WARNING:", ...m);
 
+// Patch Next.js @next/font Google loader bug where parameterized URLs (e.g. /l/font?kit=...&v=v22)
+// cause /\.(woff|woff2|eot|ttf|otf)$/.exec(url)[1] to throw TypeError: Cannot read properties of null (reading '1').
+function patchNextFontLoader() {
+  const p = path.join(BUILDER_DIR, "node_modules", "next", "dist", "compiled", "@next", "font", "dist", "google", "loader.js");
+  if (fs.existsSync(p)) {
+    try {
+      const src = fs.readFileSync(p, "utf8");
+      const target = "const ext = /\\.(woff|woff2|eot|ttf|otf)$/.exec(googleFontFileUrl)[1];";
+      const replacement = "const extMatch = /\\.(woff|woff2|eot|ttf|otf)/.exec(googleFontFileUrl); const ext = extMatch ? extMatch[1] : 'woff2';";
+      if (src.includes(target)) {
+        fs.writeFileSync(p, src.replace(target, replacement), "utf8");
+        log("patched Next.js font loader for query-parameterized Google Font URLs");
+      }
+    } catch (err) {
+      warn("could not patch Next.js font loader:", err?.message || err);
+    }
+  }
+}
+patchNextFontLoader();
+
 // ---------------------------------------------------------------- env ---------
 
 /** Loads Designer/.env and Designer/.env.local (local builds). Real env vars win. */
