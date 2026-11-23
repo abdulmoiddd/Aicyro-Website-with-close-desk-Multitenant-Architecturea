@@ -1,0 +1,14 @@
+{
+  "name": "aicyro-designer",
+  "private": true,
+  "description": "Every Aicyro website design on one Netlify site: /v1, /v2, /v3 ...",
+  "scripts": {
+    "setup": "npm install --prefix builder --no-audit --no-fund",
+    "build": "npm install --prefix builder --no-audit --no-fund && node builder/build-designs.mjs",
+    "build:only": "node builder/build-designs.mjs --only",
+    "preview": "node builder/serve-dist.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
