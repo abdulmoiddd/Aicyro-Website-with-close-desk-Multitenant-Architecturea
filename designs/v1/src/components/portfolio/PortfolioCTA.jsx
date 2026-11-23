@@ -1,0 +1,29 @@
+import React from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+// Aurora redesign: the close is the job, contact, on the brand-gradient CTA band.
+const PortfolioCTA = () => {
+  return (
+    <section className="pf-close" aria-labelledby="portfolio-cta-title">
+      <div className="ax-container">
+        <div className="ax-cta" data-reveal>
+          <h2 id="portfolio-cta-title" className="ax-h2">
+            Have a complex challenge?
+          </h2>
+          <p className="ax-lead">
+            We specialize in solving the problems that others can’t. Let’s discuss your architecture, bottlenecks, and growth goals.
+          </p>
+          <div className="ax-cta__actions">
+            <Link href="/contact" className="ax-btn ax-btn--light ax-btn--lg">
+              Let’s Build Your Solution
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default PortfolioCTA;
