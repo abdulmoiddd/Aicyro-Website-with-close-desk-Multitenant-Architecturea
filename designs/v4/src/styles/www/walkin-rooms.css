@@ -1,0 +1,363 @@
+/* Walk-in · the home rooms after the four opening scenes (2026-11-23, second pass).
+ * Floor plan HUD, per-room light, the hallway marquee (tech), 05 the exhibit (stacking
+ * cards), 06 the planning room (tools rise from the floor), 07 the corridor of doors,
+ * 08 voices under a spotlight, 09 the exit door (scroll expansion).
+ * Scenes 06, 07 and 09 read one scroll value, --p (0 to 1), written by useScrollVar.js;
+ * --p is 1 without script and under reduced motion, which is each room's final state. */
+
+@property --wk-spot { syntax: "<color>"; inherits: true; initial-value: #8a2be2; }
+@property --t { syntax: "<number>"; inherits: true; initial-value: 1; }
+
+/* ============================================================ room light */
+/* doubled class: outranks the Tailwind transition-opacity utility on the same element */
+.wk-home.wk-home { --wk-spot: var(--primary); transition: opacity 500ms ease, --wk-spot 1200ms var(--wk-ease); }
+.wk-home[data-room="02"], .wk-home[data-room="06"] { --wk-spot: var(--accent-blue); }
+.wk-home[data-room="03"], .wk-home[data-room="08"] { --wk-spot: var(--secondary); }
+.wk-home[data-room="05"] { --wk-spot: color-mix(in oklch, var(--primary) 50%, var(--accent-blue)); }
+/* a wash of the room's colour from the top corner, and the pointer's spotlight */
+.wk-home::after {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(70vmax 50vmax at 100% 0%, color-mix(in oklch, var(--wk-spot) 14%, transparent), transparent 70%);
+}
+.wk-home.has-spot::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(560px circle at var(--mx, 50%) var(--my, 40%), color-mix(in oklch, var(--wk-spot) 13%, transparent), transparent 70%);
+}
+
+/* ============================================================ floor plan */
+.wk-plan {
+  position: fixed; right: clamp(10px, 1.4vw, 22px); top: 50%; translate: 0 -50%;
+  z-index: var(--z-sticky);
+  opacity: 0; pointer-events: none;
+  transition: opacity 400ms var(--wk-ease), translate 400ms var(--wk-ease);
+}
+.wk-plan.is-on { opacity: 1; pointer-events: auto; }
+.wk-plan ol { display: grid; gap: 4px; margin: 0; padding: 6px; list-style: none; border: 1px solid var(--wk-edge); border-radius: 999px; background: var(--wk-glass); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: var(--wk-shadow-2); }
+.wk-plan__room { position: relative; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 999px; background: transparent; color: var(--color-ink-2); cursor: pointer; transition: background-color 240ms var(--wk-ease), color 240ms var(--wk-ease), transform 300ms var(--wk-ease-spring); }
+.wk-plan__n { font: 500 0.6875rem/1 var(--font-mono); }
+.wk-plan__label {
+  position: absolute; right: calc(100% + 14px); top: 50%; translate: 8px -50%;
+  padding: 6px 12px; border: 1px solid var(--wk-edge); border-radius: 999px;
+  background: var(--wk-glass-strong); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  color: var(--color-ink); font: 500 0.75rem/1 var(--font-body); white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 200ms var(--wk-ease), translate 260ms var(--wk-ease);
+}
+.wk-plan__room:hover, .wk-plan__room:focus-visible { color: var(--color-ink); background: var(--wk-ink-08); }
+.wk-plan__room:hover .wk-plan__label, .wk-plan__room:focus-visible .wk-plan__label { opacity: 1; translate: 0 -50%; }
+.wk-plan__room[aria-current="location"] { background: var(--primary); color: var(--on-primary); transform: scale(1.08); box-shadow: 0 8px 20px -8px var(--wk-glow); }
+@media (max-width: 75rem) { .wk-plan { display: none; } }
+
+/* ============================================================ the hallway: technologies, sideways */
+.wk-tech { position: relative; padding-block: var(--space-2xl) var(--section-gap-s); overflow: hidden; }
+.wk-tech__head { display: grid; gap: 12px; margin-bottom: var(--space-xl); }
+.wk-tech__title { font-size: clamp(1.6rem, 1.6vw + 1rem, 2.6rem); letter-spacing: -0.04em; }
+.wk-tech__tracks {
+  display: grid; gap: 14px;
+  transform: rotate(-2.5deg) scale(1.06);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+}
+.wk-tech__track { overflow: hidden; }
+.wk-tech__row { display: flex; gap: 12px; width: max-content; margin: 0; padding: 4px 0; list-style: none; will-change: transform; }
+.wk-tech__row li, .wk-tech__still li {
+  display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;
+  min-height: 64px; padding: 0 26px 0 16px;
+  border: 1px solid var(--wk-edge); border-radius: 999px;
+  background: var(--wk-glass-strong);
+  font: 600 1.0625rem/1 var(--font-display); letter-spacing: -0.02em; color: var(--color-ink);
+  box-shadow: var(--wk-shadow-1);
+}
+.wk-tech__row li svg, .wk-tech__still li svg { width: 30px; height: 30px; flex-shrink: 0; }
+.wk-tech__track + .wk-tech__track li { background: color-mix(in oklch, var(--primary) 9%, var(--wk-glass)); border-color: color-mix(in oklch, var(--primary) 22%, var(--wk-edge)); }
+.wk-tech__still { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+@media (max-width: 40rem) { .wk-tech__row li { min-height: 52px; padding: 0 18px 0 12px; font-size: 0.9375rem; } .wk-tech__row li svg { width: 24px; height: 24px; } }
+
+/* ============================================================ 05 the exhibit (stacking cards) */
+.wk-exhibit { position: relative; padding-block: var(--section-gap) var(--section-gap-s); }
+.wk-exhibit__head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: var(--space-lg); margin-bottom: var(--space-2xl); }
+.wk-exhibit__head .ax-head { margin-bottom: 0; }
+@media (max-width: 60rem) { .wk-exhibit__head { grid-template-columns: minmax(0, 1fr); } }
+.wk-exhibit__stack { list-style: none; margin: 0 auto; padding-bottom: 6vh; }
+.wk-exhibit__slot {
+  position: sticky;
+  top: calc(var(--nav-h) + 36px + var(--i) * 22px);
+  height: min(74svh, 680px);
+  margin-bottom: 16vh;
+  perspective: 1600px;
+}
+.wk-exhibit__slot:last-child { margin-bottom: 0; }
+.wk-exhibit__card {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--wk-edge-hi);
+  border-radius: 32px;
+  background:
+    radial-gradient(90% 70% at 100% 0%, color-mix(in oklch, var(--primary) 12%, transparent), transparent 60%),
+    var(--card-bg);
+  box-shadow: 0 -24px 60px -36px color-mix(in oklch, var(--foreground) 40%, transparent), var(--wk-shadow-3);
+  transform-origin: 50% 0%;
+  will-change: transform;
+}
+.wk-exhibit__card:not(:has(> .ax-shot:not([data-img-failed]))) { grid-template-columns: minmax(0, 1fr); }
+.wk-exhibit__shot.ax-shot { height: 100%; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+.wk-exhibit__shot img { height: 100%; object-fit: cover; object-position: top center; }
+.wk-exhibit__body { display: grid; align-content: center; gap: 14px; min-width: 0; padding: clamp(24px, 3.4vw, 56px); }
+.wk-exhibit__count { font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.12em; color: var(--color-ink-2); }
+.wk-exhibit__count b { color: var(--primary); font-weight: 600; }
+.wk-exhibit__tag { justify-self: start; padding: 6px 12px; border: 1px solid var(--wk-edge); border-radius: 999px; background: var(--wk-glass); font-size: var(--text-sm); color: var(--color-ink-2); }
+.wk-exhibit__title { font-size: clamp(1.8rem, 2vw + 1rem, 3.1rem); line-height: 1; letter-spacing: -0.045em; }
+.wk-exhibit__link { color: inherit; text-decoration: none; }
+.wk-exhibit__link::after { content: ""; position: absolute; inset: 0; z-index: 4; border-radius: 32px; }
+.wk-exhibit__link:focus-visible { outline: none; }
+.wk-exhibit__link:focus-visible::after { outline: 2px solid var(--color-focus); outline-offset: -4px; }
+.wk-exhibit__summary { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.wk-exhibit__facts { display: grid; gap: 10px; margin: 6px 0 0; }
+.wk-exhibit__facts > div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; padding-top: 10px; border-top: 1px solid var(--wk-edge); }
+.wk-exhibit__facts dt { font: 500 0.6875rem/1.6 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); }
+.wk-exhibit__facts dd { margin: 0; font-size: var(--text-sm); color: var(--color-ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.wk-exhibit__more { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; color: var(--primary); font-weight: 600; }
+.wk-exhibit__more svg { transition: transform 300ms var(--wk-ease); }
+.wk-exhibit__card:hover .wk-exhibit__more svg { transform: translate(3px, -3px); }
+.wk-exhibit__card:hover .ax-shot > img { transform: scale(1.03); }
+.wk-exhibit__dim { position: absolute; inset: 0; z-index: 3; background: var(--background); pointer-events: none; }
+@media (max-width: 60rem) {
+  .wk-exhibit__slot { height: min(80svh, 720px); top: calc(var(--nav-h) + 28px + var(--i) * 14px); margin-bottom: 12vh; }
+  .wk-exhibit__card { grid-template-columns: minmax(0, 1fr); grid-template-rows: 40% minmax(0, 1fr); }
+  .wk-exhibit__card:not(:has(> .ax-shot:not([data-img-failed]))) { grid-template-rows: minmax(0, 1fr); }
+  .wk-exhibit__body { align-content: start; gap: 10px; padding: 22px; overflow: hidden; }
+}
+@media (max-width: 40rem) {
+  .wk-exhibit__facts > div:not(:last-child) { display: none; }
+  .wk-exhibit__facts > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .wk-exhibit__summary { -webkit-line-clamp: 2; }
+}
+.wk-exhibit__stack.is-still .wk-exhibit__slot { position: relative; top: auto; height: auto; min-height: 420px; margin-bottom: 24px; }
+
+/* ============================================================ 06 the planning room */
+.wk-home main .wk-planroom { animation: none; }
+.wk-planroom { --p: 1; transform: perspective(1600px) scale(calc(0.93 + 0.07 * var(--p))); transform-origin: 50% 100%; }
+.wk-planroom .hm-res > li {
+  --k: 0;
+  --t: clamp(0, calc((var(--p) - 0.12 - var(--k) * 0.14) * 2.8), 1);
+  transform: translate3d(0, calc((1 - var(--t)) * 170px), calc((1 - var(--t)) * -380px)) rotateX(calc((1 - var(--t)) * 40deg));
+  opacity: calc(0.1 + var(--t) * 0.9);
+  transform-origin: 50% 100%;
+}
+.wk-planroom .hm-res > li:nth-child(2) { --k: 1; }
+.wk-planroom .hm-res > li:nth-child(3) { --k: 2; }
+.wk-planroom .hm-res > li:hover { transform: translate3d(0, -6px, 20px) rotateX(2deg); }
+.wk-planroom .ax-head .ax-lead { margin-top: 4px; }
+
+/* ============================================================ 07 the corridor of doors */
+.wk-why { position: relative; padding-bottom: var(--section-gap-s); }
+.wk-why__scene { --p: 1; position: relative; height: 340svh; }
+.wk-why__stage {
+  position: sticky; top: 0;
+  height: 100svh; min-height: 680px;
+  display: grid; grid-template-rows: auto minmax(0, 1fr); align-content: center;
+  padding-block: calc(var(--nav-h) + 40px) 48px;
+  overflow: hidden;
+}
+.wk-why__head { display: grid; gap: 14px; margin-bottom: clamp(24px, 4vh, 48px); }
+.wk-why__doors {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px);
+  height: min(58svh, 560px);
+  margin: 0 auto; list-style: none;
+  perspective: 1800px;
+}
+.wk-door-item {
+  --t: clamp(0, calc((var(--p) - 0.06 - var(--i) * 0.165) * 5.5), 1);
+  position: relative;
+  border-radius: 200px 200px 14px 14px;
+  transform-style: preserve-3d;
+}
+/* the room behind the door */
+.wk-door-item__room {
+  position: absolute; inset: 0;
+  display: grid; align-content: end; gap: 10px;
+  padding: 0 clamp(16px, 1.6vw, 26px) clamp(20px, 2.4vw, 32px);
+  border: 1px solid var(--wk-edge-hi);
+  border-radius: inherit;
+  overflow: hidden;
+  background:
+    linear-gradient(to top, color-mix(in oklch, var(--card-bg) 92%, transparent) 30%, transparent 85%),
+    radial-gradient(120% 70% at 50% 0%, color-mix(in oklch, var(--primary) 34%, transparent), transparent 70%),
+    var(--wk-room);
+  box-shadow: inset 0 0 0 6px color-mix(in oklch, var(--foreground) 4%, transparent);
+}
+.wk-door-item__room::before {
+  /* light pouring out once the door is open */
+  content: ""; position: absolute; inset: -20% -20% 40% -20%; z-index: -1;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--primary) 40%, transparent), transparent);
+  opacity: var(--t);
+}
+.wk-door-item__sub { font: 500 0.6875rem/1.3 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); }
+.wk-door-item__title { font-size: clamp(1.15rem, 0.8vw + 0.8rem, 1.6rem); line-height: 1.05; letter-spacing: -0.035em; }
+.wk-door-item__desc { font-size: 0.9375rem; line-height: 1.5; color: var(--color-ink-2); }
+/* the door leaf */
+.wk-door-item__leaf {
+  position: absolute; inset: 6px;
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 30%;
+  border: 1px solid var(--wk-edge-hi);
+  border-radius: 194px 194px 10px 10px;
+  background:
+    linear-gradient(160deg, color-mix(in oklch, var(--card-bg) 86%, var(--primary)), var(--card-bg) 70%);
+  box-shadow: var(--wk-shadow-2);
+  transform-origin: 0% 50%;
+  transform: rotateY(calc(var(--t) * -112deg));
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+.wk-door-item__num { font: 700 clamp(2.2rem, 2.6vw, 3.4rem)/1 var(--font-display); letter-spacing: -0.06em; background: var(--wk-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.wk-door-item__name { margin-top: 10px; max-width: 12ch; text-align: center; font: 600 0.9375rem/1.25 var(--font-body); color: var(--color-ink); }
+.wk-door-item__handle { position: absolute; right: 14px; top: 56%; width: 8px; height: 40px; border-radius: 4px; background: var(--wk-grad); box-shadow: 0 6px 14px -6px var(--wk-glow); }
+.wk-door-item__panel { position: absolute; left: 18px; right: 30px; border: 1px solid var(--wk-edge); border-radius: 10px; }
+.wk-door-item__panel--a { top: 52%; height: 16%; }
+.wk-door-item__panel--b { top: 72%; height: 20%; }
+.wk-why__floor {
+  position: absolute; left: -30%; right: -30%; bottom: -8%; height: 42%; pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in oklch, var(--primary) 22%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklch, var(--primary) 22%, transparent) 1px, transparent 1px);
+  background-size: 80px 80px;
+  transform: perspective(500px) rotateX(68deg); transform-origin: bottom center;
+  -webkit-mask-image: linear-gradient(to top, black, transparent 85%); mask-image: linear-gradient(to top, black, transparent 85%);
+}
+/* stacked: phones, tablets and reduced motion; each door opens on its own */
+.wk-why__scene.is-stacked, .wk-why__scene.is-still { height: auto; }
+.wk-why__scene.is-stacked .wk-why__stage, .wk-why__scene.is-still .wk-why__stage { position: relative; height: auto; min-height: 0; padding-block: var(--section-gap) var(--space-xl); }
+.wk-why__scene.is-stacked .wk-why__doors, .wk-why__scene.is-still .wk-why__doors { grid-template-columns: minmax(0, 1fr); height: auto; gap: 16px; }
+.wk-why__scene.is-stacked .wk-door-item, .wk-why__scene.is-still .wk-door-item { --t: 0; min-height: 260px; border-radius: 120px 120px 14px 14px; transition: --t 1300ms var(--wk-ease); }
+.wk-why__scene.is-stacked .wk-door-item.is-open, .wk-why__scene.is-still .wk-door-item { --t: 1; }
+.wk-why__scene.is-stacked .wk-door-item__room { padding-top: 70px; }
+.wk-why__scene.is-stacked .wk-door-item__leaf, .wk-why__scene.is-still .wk-door-item__leaf { border-radius: 114px 114px 10px 10px; padding-top: 48px; }
+.wk-why__scene.is-stacked .wk-door-item__panel { display: none; }
+.wk-why__scene.is-still .wk-door-item__leaf { display: none; }
+.wk-why__scene.is-stacked .wk-why__floor, .wk-why__scene.is-still .wk-why__floor { display: none; }
+@media (min-width: 60.01rem) and (max-width: 80rem) {
+  .wk-door-item__desc { font-size: 0.875rem; }
+}
+
+/* ============================================================ 08 voices, under a spotlight */
+.wk-voices::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: conic-gradient(from 180deg at 50% -12%, transparent 152deg, color-mix(in oklch, var(--wk-spot) 20%, transparent) 180deg, transparent 208deg);
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 95%); mask-image: linear-gradient(to bottom, black 30%, transparent 95%);
+}
+.wk-voices .hm-quote {
+  position: relative;
+  padding: clamp(28px, 4vw, 56px);
+  border: 1px solid var(--wk-edge-hi);
+  border-radius: 32px;
+  background: radial-gradient(80% 60% at 50% 0%, color-mix(in oklch, var(--wk-spot) 12%, transparent), transparent 70%), var(--wk-glass-strong);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  box-shadow: var(--wk-shadow-3);
+}
+.wk-voices .hm-quotes > li { padding: 0; border: 0; background: none; }
+.wk-voices .hm-quote blockquote::before { top: -0.3em; }
+.wk-voices .hm-quote__nav { justify-content: center; border-top: 0; margin-top: var(--space-lg); }
+
+/* ============================================================ 09 the exit door */
+.wk-exit {
+  --p: 1;
+  --o: clamp(0, calc((var(--p) - 0.04) * 2.2), 1);
+  --g: clamp(0, calc((var(--p) - 0.22) * 1.75), 1);
+  --c: clamp(0, calc((var(--p) - 0.32) * 2.6), 1);
+  position: relative; height: 280svh;
+}
+.wk-exit__stage {
+  position: sticky; top: 0;
+  height: 100svh; min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.wk-exit__stage::before {
+  /* light leaking from the door onto the wall */
+  content: ""; position: absolute; left: 50%; top: 52%; width: 70vmin; height: 90vmin; translate: -50% -50%; z-index: -1;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--primary) 34%, transparent), transparent);
+  opacity: calc(0.4 + var(--o) * 0.6);
+  filter: blur(20px);
+}
+.wk-exit__wall {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%; margin: 0;
+  font: 700 clamp(4rem, 14vw, 15rem)/0.85 var(--font-display); letter-spacing: -0.06em; white-space: nowrap;
+  color: transparent; -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground) 10%, transparent);
+  opacity: calc(1 - var(--g));
+  transform: scale(calc(1 + var(--g) * 0.4));
+  pointer-events: none; user-select: none;
+}
+.wk-exit__room {
+  position: absolute; inset: 0;
+  perspective: 1400px;
+  clip-path: inset(
+    calc((1 - var(--g)) * 22%) calc((1 - var(--g)) * 39%) calc((1 - var(--g)) * 12%) calc((1 - var(--g)) * 39%)
+    round calc((1 - var(--g)) * 260px + 40px * var(--g)) calc((1 - var(--g)) * 260px + 40px * var(--g)) calc(14px + 26px * var(--g)) calc(14px + 26px * var(--g))
+  );
+  background:
+    radial-gradient(70% 60% at 50% 105%, color-mix(in oklch, var(--primary) 40%, transparent), transparent 70%),
+    radial-gradient(60% 50% at 50% -5%, color-mix(in oklch, var(--primary) 22%, transparent), transparent 70%),
+    radial-gradient(50% 50% at 10% 0%, color-mix(in oklch, var(--accent-blue) 22%, transparent), transparent 70%),
+    var(--wk-room);
+  margin: calc(var(--g) * clamp(8px, 1.6vw, 24px));
+  border-radius: 40px;
+}
+.wk-exit__floor {
+  position: absolute; left: -30%; right: -30%; bottom: -6%; height: 55%; pointer-events: none;
+  background-image:
+    linear-gradient(color-mix(in oklch, var(--primary) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklch, var(--primary) 30%, transparent) 1px, transparent 1px);
+  background-size: 90px 90px;
+  transform: perspective(520px) rotateX(66deg); transform-origin: bottom center;
+  -webkit-mask-image: linear-gradient(to top, black 10%, transparent 90%); mask-image: linear-gradient(to top, black 10%, transparent 90%);
+}
+.wk-exit__content {
+  position: relative; z-index: 2;
+  height: 100%;
+  display: grid; align-content: center; justify-items: center; gap: clamp(18px, 2.4vw, 28px);
+  text-align: center;
+  opacity: var(--c);
+  transform: translate3d(0, calc((1 - var(--c)) * 70px), 0) scale(calc(0.92 + var(--c) * 0.08));
+}
+.wk-exit__title { font-size: var(--text-display); line-height: 0.94; letter-spacing: -0.055em; max-width: 14ch; }
+.wk-exit__lead { margin-inline: auto; }
+.wk-exit__btn { min-height: 60px; padding: 0 34px; font-size: 1.0625rem; }
+.wk-exit__leaf {
+  position: absolute; z-index: 3; top: 22%; bottom: 12%;
+  background:
+    linear-gradient(160deg, color-mix(in oklch, var(--card-bg) 82%, var(--primary)), var(--card-bg) 75%);
+  border: 1px solid var(--wk-edge-hi);
+  box-shadow: inset 0 0 0 10px color-mix(in oklch, var(--foreground) 3%, transparent);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  opacity: calc(1 - var(--g) * 1.4);
+  will-change: transform;
+}
+.wk-exit__leaf--l { left: 39%; right: 50%; border-radius: 260px 0 0 0; transform-origin: 0% 50%; transform: rotateY(calc(var(--o) * -105deg)); }
+.wk-exit__leaf--r { left: 50%; right: 39%; border-radius: 0 260px 0 0; transform-origin: 100% 50%; transform: rotateY(calc(var(--o) * 105deg)); }
+.wk-exit__leaf::after { content: ""; position: absolute; top: 55%; width: 6px; height: 34px; border-radius: 3px; background: var(--wk-grad); }
+.wk-exit__leaf--l::after { right: 10px; }
+.wk-exit__leaf--r::after { left: 10px; }
+@media (max-width: 40rem) {
+  .wk-exit__room { clip-path: inset(
+    calc((1 - var(--g)) * 24%) calc((1 - var(--g)) * 30%) calc((1 - var(--g)) * 14%) calc((1 - var(--g)) * 30%)
+    round calc((1 - var(--g)) * 160px + 28px * var(--g)) calc((1 - var(--g)) * 160px + 28px * var(--g)) calc(14px + 14px * var(--g)) calc(14px + 14px * var(--g))
+  ); }
+  .wk-exit__leaf { top: 24%; bottom: 14%; }
+  .wk-exit__leaf--l { left: 30%; border-radius: 160px 0 0 0; }
+  .wk-exit__leaf--r { right: 30%; border-radius: 0 160px 0 0; }
+}
+.wk-exit.is-still { height: auto; }
+.wk-exit.is-still .wk-exit__stage { position: relative; height: auto; min-height: 86svh; }
+.wk-exit.is-still .wk-exit__leaf, .wk-exit.is-still .wk-exit__wall { display: none; }
+
+/* ============================================================ reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .wk-home.wk-home { transition: none; }
+  .wk-home.has-spot::before { display: none; }
+  .wk-planroom { transform: none; }
+}
