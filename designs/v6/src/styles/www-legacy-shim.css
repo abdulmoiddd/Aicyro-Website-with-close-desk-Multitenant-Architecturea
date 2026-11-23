@@ -1,0 +1,7 @@
+/* Hand-written: keeps the shared footer looking as it did on the super admin routes
+   (/mes, /messages) after the Walk-in footer added a top row, an about line and a wordmark. */
+:where(.www-legacy) .ax-foot__top { display: contents; }
+:where(.www-legacy) .ax-foot__top .ax-foot__cta,
+:where(.www-legacy) .ax-foot__about,
+:where(.www-legacy) .ax-foot__mark,
+:where(.www-legacy) .ax-foot .ax-btn > svg { display: none; }
