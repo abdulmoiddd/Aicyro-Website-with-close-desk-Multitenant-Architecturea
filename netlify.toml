@@ -1,0 +1,22 @@
+# One Netlify site for every design.
+#   designs/v1 -> https://<your-site>.netlify.app/v1/
+#   designs/v2 -> https://<your-site>.netlify.app/v2/
+# Set environment variables ONCE in Netlify (Site configuration > Environment variables).
+# Every design is built with the same values.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--legacy-peer-deps"
+  # This is a static site of exported designs, not a Next.js server app.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  # Next.js builds are memory hungry; give Node room when several designs build.
+  NODE_OPTIONS = "--max-old-space-size=6144"
+
+# Keeps finished design builds and the shared node_modules between deploys,
+# so pushing a new design only builds that design.
+[[plugins]]
+  package = "/netlify/plugins/designer-cache"
