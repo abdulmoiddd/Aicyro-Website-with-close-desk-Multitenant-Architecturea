@@ -9,7 +9,7 @@
  * state under reduced motion. Scenes 06 and 09 read --p (0 to 1) from useScrollVar.js. */
 
 .tr-home {
-  --tr-display: var(--font-tour-display, "Big Shoulders"), "Arial Narrow", Impact, sans-serif;
+  --tr-display: var(--font-tour-display, "Big Shoulders Display", "Big Shoulders"), "Arial Narrow", Impact, sans-serif;
   --tr-edge: color-mix(in oklch, var(--foreground) 14%, transparent);
   --tr-edge-soft: color-mix(in oklch, var(--foreground) 8%, transparent);
   /* the departures board is dark in every theme */
