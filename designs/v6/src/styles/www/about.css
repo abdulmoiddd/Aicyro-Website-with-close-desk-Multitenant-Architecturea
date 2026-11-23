@@ -1,0 +1,75 @@
+/* Hallmark · about pages: page-specific rules for the public website, scoped under .www (system in ../www.css, DESIGN.md § Variants) */
+/* Hallmark · about group: /about (Banner, Split, Statement band, Rows, closing band), /contact (Banner, Form with the ways to reach beside it, booking band, blueprint), /MeetingScheduler (Form) */
+
+/* ------------------------------------------------------------ banner hero (inner pages of this group) */
+.www .about-banner {
+  padding-block: var(--space-2xl) var(--space-xl);
+  border-bottom: 1px solid var(--color-rule);
+}
+.www .about-banner .ax-head--split { align-items: end; }
+.www .about-banner .ax-lead { padding-bottom: var(--space-2xs); }
+.www .about-banner + .ax-section { padding-top: var(--space-3xl); }
+
+/* ------------------------------------------------------------ /about: who we are (split) */
+.www .about-mission { align-items: stretch; }
+.www .about-mission > :first-child { align-content: center; }
+.www .about-values { display: grid; gap: var(--space-sm); margin: var(--space-xs) 0 0; padding: var(--space-md) 0 0; list-style: none; border-top: 1px solid var(--color-rule); }
+.www .about-values li { display: flex; align-items: center; gap: var(--space-sm); font-weight: 600; color: var(--color-ink); }
+.www .about-values svg { flex-shrink: 0; color: var(--color-ink-2); }
+
+.www .about-commitment { display: grid; align-content: space-between; gap: var(--space-2xl); padding: var(--space-2xl); }
+.www .about-commitment blockquote { margin: 0; }
+.www .about-commitment blockquote p { font: 700 var(--text-2xl)/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--color-ink); text-wrap: pretty; hanging-punctuation: first; }
+
+/* ------------------------------------------------------------ /about: the vision (statement) */
+.www .about-vision { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); row-gap: var(--space-xl); }
+.www .about-vision h2 { grid-column: 1 / span 10; max-width: 22ch; text-wrap: balance; }
+.www .about-vision .ax-lead { grid-column: 6 / span 7; }
+@media (max-width: 60rem) {
+  .www .about-vision h2, .www .about-vision .ax-lead { grid-column: 1 / -1; }
+}
+
+/* ------------------------------------------------------------ /about: why Aicyro (rows beside the head) */
+.www .about-why { align-items: start; }
+.www .about-why .ax-rows > li { padding-block: var(--space-xl); }
+.www .about-why__title { display: flex; align-items: flex-start; gap: var(--space-sm); }
+.www .about-why__title svg { flex-shrink: 0; margin-top: 0.1em; color: var(--color-ink-2); }
+
+/* ------------------------------------------------------------ closing band (about, contact) */
+.www .about-close { align-items: end; }
+.www .about-band--last { border-bottom: 0; }
+
+/* ------------------------------------------------------------ /contact: the ways to reach beside the form */
+.www .contact-grid { align-items: start; }
+.www .contact-ways { display: grid; gap: var(--space-xl); margin: 0; }
+.www .contact-ways > div { display: grid; gap: var(--space-xs); padding-top: var(--space-md); border-top: 1px solid var(--color-rule); }
+.www .contact-ways dt { font-size: var(--text-sm); font-weight: 600; color: var(--color-ink-2); }
+.www .contact-ways dd { margin: 0; font: 700 var(--text-title)/1.2 var(--font-display); letter-spacing: -0.015em; overflow-wrap: anywhere; }
+.www .contact-ways a { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-rule); text-underline-offset: 0.2em; transition: color var(--dur-short) var(--ease-out), text-decoration-color var(--dur-short) var(--ease-out); }
+.www .contact-ways a:hover { color: var(--color-accent); text-decoration-color: var(--color-accent); }
+.www .contact-form { padding: var(--space-xl); }
+@media (min-width: 60.0625rem) {
+  .www .contact-ways { position: sticky; top: calc(var(--nav-h) + var(--space-xl)); }
+}
+@media (max-width: 40rem) {
+  .www .contact-form { padding: var(--space-lg) var(--space-md); }
+}
+
+/* ------------------------------------------------------------ /MeetingScheduler */
+.www .meet-grid { align-items: start; }
+.www .meet-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg) var(--gap-columns); margin: 0; }
+.www .meet-facts > div { display: grid; gap: var(--space-2xs); padding-top: var(--space-md); border-top: 1px solid var(--color-rule); }
+.www .meet-facts dt { display: flex; align-items: center; gap: var(--space-xs); font-weight: 600; color: var(--color-ink); }
+.www .meet-facts dt svg { flex-shrink: 0; color: var(--color-ink-2); }
+.www .meet-facts dd { margin: 0; color: var(--color-ink-2); }
+.www .meet-form { display: grid; gap: var(--space-lg); padding: var(--space-xl); }
+.www .meet-auth { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-md); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-rule); }
+.www .meet-auth .ax-btn img { flex-shrink: 0; }
+.www .meet-connected { display: flex; align-items: center; gap: var(--space-xs); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--color-rule); font-weight: 600; color: var(--color-success); }
+.www .meet-status { display: flex; align-items: flex-start; gap: var(--space-sm); font-size: var(--text-sm); }
+.www .meet-date { padding-right: var(--space-sm); }
+:where([data-theme$="dark"]) .www .meet-date { color-scheme: dark; }
+@media (max-width: 40rem) {
+  .www .meet-facts { grid-template-columns: minmax(0, 1fr); }
+  .www .meet-form { padding: var(--space-lg) var(--space-md); }
+}
