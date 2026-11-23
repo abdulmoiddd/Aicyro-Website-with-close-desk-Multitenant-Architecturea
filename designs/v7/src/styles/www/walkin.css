@@ -1,0 +1,178 @@
+/* Obsidian · the walk-in hero (src/components/hero/WalkInHero.jsx). Prefix wh-.
+ * The scene writes its damped progress to --wh-p (0..1) on .wh-stage once per frame; every
+ * overlay below derives its opacity and offset from it in CSS, so React re-renders only on
+ * beat changes. Static mode (reduced motion, no WebGL) is a normal-height hero. */
+
+:where(.www) .wh { position: relative; background: var(--ob-0); }
+:where(.www) .wh-track { position: relative; height: 500vh; }
+:where(.www) .wh-stage {
+  --wh-p: 0;
+  position: sticky; top: 0;
+  height: 100vh; height: 100svh;
+  overflow: hidden;
+  background: var(--ob-0);
+  isolation: isolate;
+}
+
+/* WebGL canvas */
+:where(.www) .wh-canvas { position: absolute; inset: 0; z-index: 0; }
+:where(.www) .wh-canvas .wh-gl { display: block; width: 100%; height: 100%; }
+
+/* Poster: CSS architecture, the loading state and the static hero */
+:where(.www) .wh-poster { position: absolute; inset: 0; z-index: 1; pointer-events: none; transition: opacity 1.1s var(--ease-out); }
+:where(.www) .wh[data-mode="3d"][data-ready="true"] .wh-poster { opacity: 0; }
+:where(.www) .wh-poster__floor {
+  position: absolute; left: -30%; right: -30%; bottom: 0; height: 50%;
+  background-image:
+    linear-gradient(color-mix(in oklch, var(--primary) 40%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklch, var(--ob-ink) 8%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  transform: perspective(600px) rotateX(64deg); transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to top, #000, transparent 90%);
+  mask-image: linear-gradient(to top, #000, transparent 90%);
+  opacity: 0.6;
+}
+:where(.www) .wh-poster__rings { position: absolute; left: 50%; top: 30%; width: 0; height: 0; }
+:where(.www) .wh-poster__rings span {
+  position: absolute; left: 50%; top: 50%; border-radius: 50%;
+  border: 1px solid color-mix(in oklch, var(--ob-ink) 28%, transparent);
+  box-shadow: 0 0 40px -10px var(--ob-accent-glow);
+  transform: translate(-50%, -50%) rotateX(76deg);
+}
+:where(.www) .wh-poster__rings span:nth-child(1) { width: 34vmin; height: 34vmin; }
+:where(.www) .wh-poster__rings span:nth-child(2) { width: 50vmin; height: 50vmin; top: -6vmin; }
+:where(.www) .wh-poster__rings span:nth-child(3) { width: 68vmin; height: 68vmin; top: -14vmin; }
+:where(.www) .wh-poster__beam {
+  position: absolute; left: 50%; top: 0; width: 1px; height: 46%;
+  background: linear-gradient(to bottom, transparent, var(--ob-accent-soft) 60%, transparent);
+  box-shadow: 0 0 18px 2px var(--ob-accent-glow);
+}
+:where(.www) .wh-poster__mark {
+  position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-62%);
+  margin: 0; text-align: center;
+  font: 600 clamp(3.5rem, 15vw, 13rem)/0.9 var(--font-display); letter-spacing: -0.04em;
+  color: var(--ob-ink);
+  text-shadow: 0 0 60px var(--ob-accent-glow);
+}
+
+/* Vignette and top shade for the nav */
+:where(.www) .wh-veil {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 45%, transparent 55%, color-mix(in oklch, var(--ob-0) 85%, transparent) 100%),
+    linear-gradient(to bottom, color-mix(in oklch, var(--ob-0) 60%, transparent), transparent 18%);
+}
+
+/* Entry copy (beat 1): fades out as the walk begins */
+:where(.www) .wh-intro {
+  position: absolute; left: 0; right: 0; bottom: clamp(104px, 17vh, 190px); z-index: 3;
+  display: grid; justify-items: center; gap: 18px; padding-inline: var(--gutter); text-align: center;
+  opacity: clamp(0, calc(1 - var(--wh-p) * 10), 1);
+  transform: translateY(calc(var(--wh-p) * -260px));
+}
+:where(.www) .wh[data-mode="3d"] .wh-eyebrow { display: none; }
+:where(.www) .wh-eyebrow { font: 500 0.75rem/1.4 var(--font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ob-ink-2); }
+:where(.www) .wh-title {
+  max-width: 34ch;
+  font: 400 clamp(1rem, 0.5vw + 0.85rem, 1.25rem)/1.45 var(--font-body) !important;
+  letter-spacing: 0 !important;
+  color: var(--ob-ink) !important;
+}
+:where(.www) .wh-cue { display: inline-flex; align-items: center; gap: 12px; margin-top: 6px; font: 500 0.6875rem/1 var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--ob-ink-3); }
+:where(.www) .wh-cue__line { position: relative; width: 1px; height: 36px; overflow: hidden; background: color-mix(in oklch, var(--ob-ink) 14%, transparent); }
+:where(.www) .wh-cue__line::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--ob-ink); animation: wh-cue 2.2s var(--ease-out) infinite; }
+@keyframes wh-cue { to { top: 110%; } }
+
+/* The beats as text: hidden visually while the 3D tells them */
+:where(.www) .wh-beats { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; list-style: none; }
+
+/* Final reveal: the CMS line and both actions */
+:where(.www) .wh-final {
+  position: absolute; left: 0; right: 0; bottom: clamp(96px, 13vh, 150px); z-index: 4;
+  display: grid; justify-items: center; gap: 22px; padding-inline: var(--gutter); text-align: center;
+  opacity: clamp(0, calc((var(--wh-p) - 0.84) * 9), 1);
+  transform: translateY(calc((1 - clamp(0, (var(--wh-p) - 0.84) * 9, 1)) * 24px));
+  pointer-events: none;
+}
+:where(.www) .wh-final[data-live="true"] { pointer-events: auto; }
+:where(.www) .wh-final__lead { max-width: 52ch; color: var(--ob-ink-2); font-size: var(--text-lead); }
+:where(.www) .wh-final__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+/* HUD */
+:where(.www) .wh-hud {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 24px; z-index: 5;
+  display: flex; align-items: center; justify-content: flex-start; gap: 20px;
+}
+:where(.www) .wh-hud__meter { display: inline-flex; align-items: center; gap: 14px; color: var(--ob-ink-2); }
+:where(.www) .wh-hud__meter svg { transform: rotate(-90deg); }
+:where(.www) .wh-hud__track { fill: none; stroke: color-mix(in oklch, var(--ob-ink) 12%, transparent); stroke-width: 1.5; }
+:where(.www) .wh-hud__fill {
+  fill: none; stroke: var(--ob-ink); stroke-width: 1.5; stroke-linecap: round;
+  stroke-dashoffset: calc(var(--ring) * (1 - var(--wh-p)));
+  filter: drop-shadow(0 0 6px var(--ob-accent-glow));
+}
+:where(.www) .wh-hud__count { font: 500 0.8125rem/1 var(--font-mono); letter-spacing: 0.12em; font-variant-numeric: tabular-nums; }
+:where(.www) .wh-hud__count b { color: var(--ob-ink); font-weight: 500; }
+:where(.www) .wh-skip {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px;
+  border: 1px solid var(--ob-line-2); border-radius: 999px;
+  background: color-mix(in oklch, var(--ob-0) 50%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  color: var(--ob-ink); font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase;
+  cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+}
+:where(.www) .wh-skip:hover { background: color-mix(in oklch, var(--ob-ink) 8%, transparent); border-color: color-mix(in oklch, var(--ob-ink) 32%, transparent); }
+:where(.www) .wh-skip svg { animation: wh-bob 2s ease-in-out infinite; }
+@keyframes wh-bob { 50% { transform: translateY(3px); } }
+
+/* Dissolve into the page below */
+:where(.www) .wh-bridge {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 45%; z-index: 3; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--ob-0) 92%);
+  opacity: clamp(0, calc((var(--wh-p) - 0.9) * 10), 1);
+}
+
+@media (max-width: 40rem) {
+  :where(.www) .wh-hud { bottom: 16px; gap: 14px; }
+  :where(.www) .wh-skip { width: 44px; padding: 0; justify-content: center; }
+  :where(.www) .wh-skip__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :where(.www) .wh-hud__meter svg { width: 40px; height: 40px; }
+  :where(.www) .wh-final { bottom: 84px; }
+  :where(.www) .wh-final__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 360px; }
+  :where(.www) .wh-intro { bottom: 92px; }
+}
+
+/* ------------------------------------------------------------ static hero (reduced motion, no WebGL) */
+:where(.www) .wh[data-mode="static"] .wh-track { height: auto; }
+:where(.www) .wh[data-mode="static"] .wh-stage {
+  position: relative; height: auto; min-height: 100svh;
+  display: grid; align-content: center; gap: var(--space-2xl);
+  padding: calc(var(--nav-h) + 72px) var(--gutter) var(--space-3xl);
+}
+:where(.www) .wh[data-mode="static"] .wh-poster__mark { position: relative; top: auto; transform: none; }
+:where(.www) .wh[data-mode="static"] .wh-poster { position: absolute; }
+:where(.www) .wh[data-mode="static"] .wh-poster__mark { position: absolute; top: 26%; }
+:where(.www) .wh[data-mode="static"] .wh-intro,
+:where(.www) .wh[data-mode="static"] .wh-final { position: relative; inset: auto; opacity: 1; transform: none; }
+:where(.www) .wh[data-mode="static"] .wh-intro { margin-top: 34vh; }
+:where(.www) .wh[data-mode="static"] .wh-beats {
+  position: relative; width: auto; height: auto; margin: 0 auto; overflow: visible; clip: auto; white-space: normal; z-index: 3;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; max-width: 1180px; width: 100%;
+  border: 1px solid var(--ob-line); border-radius: 20px; background: var(--ob-line); overflow: hidden;
+}
+:where(.www) .wh[data-mode="static"] .wh-beats li { display: grid; gap: 6px; padding: 22px; background: color-mix(in oklch, var(--ob-1) 90%, transparent); text-align: left; }
+:where(.www) .wh-beats__num { font: 500 0.75rem/1 var(--font-mono); letter-spacing: 0.14em; color: var(--ob-accent-soft); }
+:where(.www) .wh-beats__title { font: 500 1.0625rem/1.25 var(--font-display); letter-spacing: -0.02em; color: var(--ob-ink); }
+:where(.www) .wh-beats__sub { font-size: var(--text-sm); color: var(--ob-ink-2); }
+:where(.www) .wh[data-mode="static"] .wh-hud,
+:where(.www) .wh[data-mode="static"] .wh-cue,
+:where(.www) .wh[data-mode="static"] .wh-bridge { display: none; }
+@media (max-width: 60rem) { :where(.www) .wh[data-mode="static"] .wh-beats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 30rem) { :where(.www) .wh[data-mode="static"] .wh-beats { grid-template-columns: minmax(0, 1fr); } }
+
+/* Before hydration, reduced motion already gets the static layout */
+@media (prefers-reduced-motion: reduce) {
+  :where(.www) .wh .wh-track { height: auto; }
+  :where(.www) .wh .wh-stage { position: relative; height: auto; min-height: 100svh; }
+  :where(.www) .wh .wh-canvas, :where(.www) .wh .wh-hud { display: none; }
+  :where(.www) .wh-cue__line::after, :where(.www) .wh-skip svg { animation: none; }
+}
