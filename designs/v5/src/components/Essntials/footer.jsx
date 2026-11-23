@@ -96,9 +96,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <motion.p className="ax-foot__mark" style={reduce ? undefined : { x: markX }} aria-hidden="true">
-        Aicyro Aicyro
-      </motion.p>
+     
 
       <div className="ax-container">
         <div className="ax-foot__legal">
