@@ -1,0 +1,26 @@
+# Build output and caches
+dist/
+.designer-cache/
+builder/.build/
+node_modules/
+**/node_modules/
+**/.next/
+**/out/
+.netlify/
+
+# Environment variables live in Netlify (or Designer/.env locally). Never commit them,
+# and never commit a design's own .env files.
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+!**/example.env
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
