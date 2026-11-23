@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { Poppins, Bricolage_Grotesque, Instrument_Sans, Space_Grotesk, DM_Sans, Big_Shoulders } from "next/font/google";
+import { Poppins, Bricolage_Grotesque, Instrument_Sans, Space_Grotesk, DM_Sans } from "next/font/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import "@/styles/globals.css";
@@ -66,17 +66,6 @@ const walkBody = DM_Sans({
   weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-walk-body",
-});
-
-// Home page "Tour" signage face (wayfinding display type); not preloaded, so inner
-// pages that never use it do not fetch it.
-const tourDisplay = Big_Shoulders({
-  subsets: ["latin"],
-  weight: "variable",
-  axes: ["opsz"],
-  display: "swap",
-  preload: false,
-  variable: "--font-tour-display",
 });
 
 // Super admin portal (login and inbox): rendered with the frozen pre-redesign kit
@@ -191,7 +180,7 @@ export default function App({ Component, pageProps }) {
     };
   }, [isInternalRoute, router.asPath]);
 
-  const fontVars = `${displayFont.variable} ${bodyFont.variable} ${poppins.variable} ${walkDisplay.variable} ${walkBody.variable} ${tourDisplay.variable}`;
+  const fontVars = `${displayFont.variable} ${bodyFont.variable} ${poppins.variable} ${walkDisplay.variable} ${walkBody.variable}`;
   const isAdminRoute = isAdminPath(router.pathname);
 
   // Internal routes render exactly as in the multi-tenant engine.
@@ -220,6 +209,9 @@ export default function App({ Component, pageProps }) {
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <link rel="icon" href={Favicon.src} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&display=swap" rel="stylesheet" />
       </Head>
 
       {showSplash && <LogoAnimation onComplete={() => setShowSplash(false)} />}
